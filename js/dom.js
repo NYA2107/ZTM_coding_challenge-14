@@ -29,7 +29,7 @@ class Dom{
 	}
 	clicked(callback){
 		this.dom.addEventListener("click",()=>{
-			callback()
+			callback(this)
 		})
 	}
 
