@@ -1,8 +1,8 @@
-let app = new Selector('app')
+let container = new Selector('app')
 let board = new GD(4,'div')
 let color = ['#e0e24f','#e24f4f','#d84fe2','#4fe267']
 
-app.setStyle({
+container.setStyle({
 	display:'flex',
 	flexWrap:'wrap'
 })
@@ -10,7 +10,8 @@ app.setStyle({
 board.all((v)=>{
 	let m = v.index[0]
 	let n = v.index[1]
-	v.appendTo(app)
+
+	v.appendTo(container)
 	v.setStyle({
 		width:'200px',
 		height:'200px',
@@ -24,10 +25,10 @@ board.all((v)=>{
 	})
 	v.htmlContent(`<h1>${board.GRID[m][n]}</h1>`)
 	v.clicked(()=>{
-		board.checkGrid(m,n)
+		console.log(board.checkGrid(m,n))
 		v.htmlContent(`<h1>${board.GRID[m][n]}</h1>`)
 
-		console.log(`[${m},${n}]`,{
+		console.log(`CLICK: [${m},${n}]`,{
 			board:board,
 			card:v,
 			CURRENT:board.CURRENT,
