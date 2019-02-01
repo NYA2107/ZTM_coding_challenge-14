@@ -59,6 +59,8 @@ class GE{
             this.GRID[m][n] = "x";
         }else if(this.GRID[m][n] != this.CURRENT && this.CURRENT != null){
             this.CURRENT = null;
+            this.CURR_X = -1;
+            this.CURR_Y = -1;
         }else if(this.CURRENT == null){
             this.CURRENT = this.GRID[m][n];
             this.CURR_X = m;
