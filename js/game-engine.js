@@ -21,7 +21,19 @@ class GE{
      *                 [ x , x , x ]]
      *  */
     create2DGrid(imageTotal){
-
+        var result;
+        if(imageTotal%2 == 0){
+            result = new Array(imageTotal);
+            for(let i = 0; i < imageTotal ; i++){
+                result[i] = new Array(imageTotal);
+            }
+        }else{
+            result = new Array(imageTotal-1);
+            for(let i = 0 ; i < imageTotal-1 ; i++){
+                result[i] = new Array(imageTotal);
+            }
+        }
+        return result;
     }
     // Will generate this.GRID data, that contain number between 0 - this.IMAGE_TOTAL-1
     /** example if this.IMAGE_TOTAL = 3
