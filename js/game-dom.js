@@ -46,7 +46,7 @@ class GD extends GE{
 	}
 
 	/*
-		find all GRID_DOM
+		find all dom in GRID_DOM
 	*/
 	all(callback){
 		for (let i = 0 ; i < this.GRID_DOM.length; i++) {
@@ -59,7 +59,6 @@ class GD extends GE{
 		find dom in GRID_DOM by value
 	*/
 	value(value, callback){
-		let temp = []
 		for (let i = 0 ; i < this.GRID_DOM.length; i++) {
 			for (let j = 0 ; j < this.GRID_DOM[i].length; j++) {
 				if(this.GRID_DOM[i][j].value == value){
