@@ -6,32 +6,24 @@ class GE{
         this.CURRENT = null;
         this.CURR_X = -1;
         this.CURR_Y = -1;
+        this.generateGameData();
+    }
+    /**
+     * Print Grid in console
+     */
+    printGrid(){
+        for(let i = 0 ; i < this.GRID.length ;i++){
+            console.log(this.GRID[i]);
+        }
     }
     /**
      * Will Create 2D Array
-     * if imageTotal = even
-     *      result = 2D array imageTotal x imageTotal
-     *      example imageTotal = 2
-     *      result = [ [ undefined , undefined] ,
-     *                 [ undefined , undefined]]
-     * else if imageTotal = odd
-     *      result = 2D array imageTotal-1 x imageTotal
-     *      example imageTotal = 3
-     *      result = [ [ x , x , x ] ,
-     *                 [ x , x , x ]]
+     *  result = imageTotal x 2
      *  */
     create2DGrid(imageTotal){
-        var result;
-        if(imageTotal%2 == 0){
-            result = new Array(imageTotal);
-            for(let i = 0; i < imageTotal ; i++){
-                result[i] = new Array(imageTotal);
-            }
-        }else{
-            result = new Array(imageTotal-1);
-            for(let i = 0 ; i < imageTotal-1 ; i++){
-                result[i] = new Array(imageTotal);
-            }
+        var result = new Array(2);
+        for(let i = 0 ; i < 2 ; i++){
+            result[i] = new Array(imageTotal);
         }
         return result;
     }
@@ -47,7 +39,20 @@ class GE{
      * *NB : data position will be randomize
      * */ 
     generateGameData(){
-
+        console.log("(Log) Loading..");
+        for (let i = 0 ; i < this.IMAGE_TOTAL ; i++){
+            // Pick 2 Location
+            let flag = 2;
+            while(flag != 0){
+                let x = this.generateRandomNumber(0,2);
+                let y = this.generateRandomNumber(0,this.IMAGE_TOTAL);
+                if(this.GRID[x][y] == undefined){
+                    this.GRID[x][y] = i;
+                    flag -=1;
+                }
+            }
+        }
+        console.log("(Log) Success");
     }
 
     /**
@@ -78,7 +83,12 @@ class GE{
             this.CURR_X = m;
             this.CURR_Y = n;
         }
-        isItDone();
+
+        if(this.isItDone()){
+           return true; 
+        }else{
+           return false;
+        }
     }
     /**
      * Check 
@@ -94,4 +104,11 @@ class GE{
             return false;
         }
     }
+
+    /**
+     * Generate random integer number between min <= result < max 
+     */
+    generateRandomNumber(min ,max){
+        return Math.floor(Math.random() * (max-min)) + min ;
+    } 
 }
