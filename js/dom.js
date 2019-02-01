@@ -1,14 +1,19 @@
 class Dom{
 	constructor(dom){
 		this.dom = document.createElement(dom)
-		this.style = this.dom.style
-		this.computedStyle = getComputedStyle(this.dom)
+	}
+	setValue(value){
+		this.value = value
+	}
+	setId(id){
+		this.id = id
+		this.dom.id = id
 	}
 	setStyle(newStyle){
-		Object.assign(this.style, newStyle);
+		Object.assign(this.dom.style, newStyle);
 	}
-	appendTo(parrentId){
-		document.getElementById(parrentId).appendChild(this.dom)
+	appendTo(parrent){
+		parrent.dom.appendChild(this.dom)
 	}
 	appendChild(child){
 		this.dom.appendChild(child)
@@ -19,13 +24,13 @@ class Dom{
 	textContent(content){
 		this.dom.appendChild(document.createTextNode(content))
 	}
+
 }
 
 class Selector extends Dom{
-	constructor(){
+	constructor(id){
 		super()
-	}
-	selectId(id){
 		this.dom = document.getElementById(id)
 	}
 }
+

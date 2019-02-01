@@ -1,15 +1,15 @@
-let p = new Dom('p')
-let app = new Selector()
+let app = new Selector('app')
 
-p.textContent('Hello, World')
+let FAKE_GRID_DATA = [
+	[1,0,2],
+	[0,2,1]
+]
+let card = new GD(FAKE_GRID_DATA, 'div')
+console.log(card)
 
-p.setStyle({
-	width:'200px',
-	height:'500px',
-	backgroundColor:'yellow'
-})
+app.htmlContent('<h1>On Going</h1>')
 
-p.appendTo('app')
 
-app.selectId('app')
-app.htmlContent('<h1>Hallo</h1>')
+
+
+
