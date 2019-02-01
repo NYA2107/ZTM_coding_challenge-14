@@ -1,14 +1,14 @@
 /*
 	Require DOM.js
 */
-class GD{
+class GD extends GE{
 	/*
 		constructor parameter 'grid', is variable from GRID in Game Engine
 	*/
-	constructor(grid, element){
-		this.GRID_DATA = grid
+	constructor(imageTotal, element){
+		super(imageTotal)
 		this.ELEMENT = element
-		this.GRID_DOM = this.createGD(grid)
+		this.GRID_DOM = this.createGD(this.GRID)
 	}
 	/*
 		Generate element from grid data fill with 'element' variable
@@ -31,37 +31,39 @@ class GD{
 			for (let j = 0 ; j < grid[i].length; j++) {
 				let domTemp = new Dom(this.ELEMENT)
 				domTemp.setId(`grid-${i}${j}`)
-				domTemp.setValue(this.GRID_DATA[i][j])
+				domTemp.setValue(this.GRID[i][j])
+				domTemp.setIndex(i,j)
 		    	array[i].push(domTemp)
 			}
 		}
 		return array
 	}
 	/*
-		set individual stlye from GRID_DOM
+		find individual dom in GRID_DOM by index
 	*/
-	styleByIndex(i,j,style){
-		this.GRID_DOM[i][j].setStyle(style)
+	index(i,j,callback){
+		callback(this.GRID_DOM[i][j])
 	}
 
 	/*
-		set all GRID_DOM style
+		find all GRID_DOM
 	*/
-	styleAll(style){
+	all(callback){
 		for (let i = 0 ; i < this.GRID_DOM.length; i++) {
 			for (let j = 0 ; j < this.GRID_DOM[i].length; j++) {
-				this.GRID_DOM[i][j].setStyle(style)
+				callback(this.GRID_DOM[i][j])
 			}
 		}
 	}
 	/*
-		set GRID_DOM style by value
+		find dom in GRID_DOM by value
 	*/
-	styleByValue(value){
+	value(value, callback){
+		let temp = []
 		for (let i = 0 ; i < this.GRID_DOM.length; i++) {
 			for (let j = 0 ; j < this.GRID_DOM[i].length; j++) {
-				if(this.GRID_DOM[i][j].value = value){
-					this.GRID_DOM[i][j].setStyle(style)	
+				if(this.GRID_DOM[i][j].value == value){
+					callback(this.GRID_DOM[i][j])
 				}
 			}
 		}

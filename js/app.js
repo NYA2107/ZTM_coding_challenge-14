@@ -1,15 +1,36 @@
 let app = new Selector('app')
+let board = new GD(4,'div')
+let color = ['blue','red','yellow','green','orange']
 
-let FAKE_GRID_DATA = [
-	[1,0,2],
-	[0,2,1]
-]
-let card = new GD(FAKE_GRID_DATA, 'div')
-
-console.log(card.GRID_DOM)
+app.setStyle({
+	display:'flex',
+	flexWrap:'wrap'
+})
 
 
-app.htmlContent('<h1>On Going</h1>')
+board.all((v)=>{
+	v.appendTo(app)
+	v.setStyle({
+		width:'200px',
+		height:'200px',
+		backgroundColor:color[v.value],
+		margin:'2px',
+		display:'flex',
+		justifyContent:'center',
+		alignItems:'center'
+	})
+	v.htmlContent(`${v.value}`)
+	v.clicked(()=>{
+		board.checkGrid(v.index[0],v.index[1])
+		console.log({
+			card:board,
+			index:v.index,
+			value:v.value
+		})
+	})
+})
+
+
 
 
 

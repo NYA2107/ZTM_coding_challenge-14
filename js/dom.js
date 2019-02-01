@@ -5,6 +5,9 @@ class Dom{
 	setValue(value){
 		this.value = value
 	}
+	setIndex(i,j){
+		this.index = [i,j]
+	}
 	setId(id){
 		this.id = id
 		this.dom.id = id
@@ -23,6 +26,11 @@ class Dom{
 	}
 	textContent(content){
 		this.dom.appendChild(document.createTextNode(content))
+	}
+	clicked(callback){
+		this.dom.addEventListener("click",()=>{
+			callback()
+		})
 	}
 
 }
