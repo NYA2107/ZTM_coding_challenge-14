@@ -5,7 +5,9 @@ let FAKE_GRID_DATA = [
 	[0,2,1]
 ]
 let card = new GD(FAKE_GRID_DATA, 'div')
-console.log(card)
+
+console.log(card.GRID_DOM)
+
 
 app.htmlContent('<h1>On Going</h1>')
 

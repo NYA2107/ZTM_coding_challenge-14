@@ -40,7 +40,7 @@ class GD{
 	/*
 		set individual stlye from GRID_DOM
 	*/
-	setStyle(i,j,style){
+	styleByIndex(i,j,style){
 		this.GRID_DOM[i][j].setStyle(style)
 	}
 
@@ -51,6 +51,18 @@ class GD{
 		for (let i = 0 ; i < this.GRID_DOM.length; i++) {
 			for (let j = 0 ; j < this.GRID_DOM[i].length; j++) {
 				this.GRID_DOM[i][j].setStyle(style)
+			}
+		}
+	}
+	/*
+		set GRID_DOM style by value
+	*/
+	styleByValue(value){
+		for (let i = 0 ; i < this.GRID_DOM.length; i++) {
+			for (let j = 0 ; j < this.GRID_DOM[i].length; j++) {
+				if(this.GRID_DOM[i][j].value = value){
+					this.GRID_DOM[i][j].setStyle(style)	
+				}
 			}
 		}
 	}
