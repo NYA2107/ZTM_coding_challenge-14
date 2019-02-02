@@ -9,6 +9,7 @@ class GD extends GE{
 		super(imageTotal)
 		this.ELEMENT = element
 		this.GRID_DOM = this.createGD(this.GRID)
+		this.DOM_BEFORE = null;
 	}
 	/*
 		Generate element from grid data fill with 'element' variable
