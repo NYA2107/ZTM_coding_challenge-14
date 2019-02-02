@@ -71,7 +71,7 @@ class GE{
      *      set this.CURR_Y = n
      */
     checkGrid(m,n){
-        if(this.GRID[m][n] == this.CURRENT && this.CURRENT != null){
+        if(this.GRID[m][n] == this.CURRENT && this.CURRENT != null && m != this.CURR_X && n != this.CURR_Y){
             this.CURRENT = null;
             this.GRID[m][n] = "x";
             this.GRID[this.CURR_X][this.CURR_Y] = "x";
