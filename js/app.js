@@ -25,19 +25,29 @@ board.all((v)=>{
 	})
 	v.htmlContent(`<h1>${board.GRID[m][n]}</h1>`)
 	v.clicked(()=>{
-		let x = board.CURR_X
-		let y = board.CURR_Y
-		board.checkGrid(m,n)
-		v.htmlContent(`<h1>${board.GRID[m][n]}</h1>`)
-		if(x > -1){
-			board.GRID_DOM[x][y].htmlContent(`<h1>${board.GRID[x][y]}</h1>`)
-		}
 		console.log(`CLICK: [${m},${n}]`,{
 			board:board,
 			card:v,
 			CURRENT:board.CURRENT,
-			currGRID:board.GRID[m][n]
+			currGRID:board.GRID[m][n],
+			currX :board.CURR_X,
+			currY : board.CURR_Y
 		})
+		var curr_x = board.CURR_X;
+		var curr_y = board.CURR_Y;
+		var result = board.checkGrid(m,n);
+		if(result.boolFlag){
+			// done;
+		}else if(!result.boolFlag && result.intFlag == 3){
+			// update 1 dom into x
+			v.htmlContent(`<h1>${board.GRID[m][n]}</h1>`);
+			board.DOM_BEFORE = v;
+		}else if(!result.boolFlag && result.intFlag < 3){
+			// update 2 dom into x or default
+			v.htmlContent(`<h1>${board.GRID[m][n]}</h1>`);
+			board.DOM_BEFORE.htmlContent(`<h1>${board.GRID[curr_x][curr_y]}</h1>`)
+		}
+		
 	})
 })
 
