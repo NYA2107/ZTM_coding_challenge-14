@@ -40,13 +40,16 @@ board.all((v)=>{
 			// done;
 		}else if(!result.boolFlag && result.intFlag == 3){
 			// update 1 dom into x
-			v.htmlContent(`<h1>${board.GRID[m][n]}</h1>`);
+			v.setValue(board.GRID[m][n])
 			board.DOM_BEFORE = v;
 		}else if(!result.boolFlag && result.intFlag < 3){
 			// update 2 dom into x or default
-			v.htmlContent(`<h1>${board.GRID[m][n]}</h1>`);
-			board.DOM_BEFORE.htmlContent(`<h1>${board.GRID[curr_x][curr_y]}</h1>`)
+			v.setValue(board.GRID[m][n])
+			board.DOM_BEFORE.setValue(board.GRID[curr_x][curr_y])
 		}
+		//draw result
+		v.htmlContent(`<h1>${v.value}</h1>`);
+		board.DOM_BEFORE.htmlContent(`<h1>${board.DOM_BEFORE.value}</h1>`)
 		
 	})
 })
