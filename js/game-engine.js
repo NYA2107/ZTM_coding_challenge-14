@@ -83,6 +83,7 @@ class GE{
             this.CURR_X = -1;
             this.CURR_Y = -1;
             result.intFlag = 1;
+            this.DONE_COUNTER--
         }else if(this.GRID[m][n] != this.CURRENT && this.CURRENT != null){
             this.GRID[this.CURR_X][this.CURR_Y] = this.CURRENT
             this.CURRENT = null;
