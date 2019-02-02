@@ -74,6 +74,9 @@ class GE{
         if(this.GRID[m][n] == this.CURRENT && this.CURRENT != null){
             this.CURRENT = null;
             this.GRID[m][n] = "x";
+            this.GRID[this.CURR_X][this.CURR_Y] = "x";
+            this.CURR_X = -1;
+            this.CURR_Y = -1;
         }else if(this.GRID[m][n] != this.CURRENT && this.CURRENT != null){
             this.CURRENT = null;
             this.CURR_X = -1;
@@ -98,6 +101,7 @@ class GE{
      *      return false
      */
     isItDone(){
+        console.log("(Log) Done Counter : ",this.DONE_COUNTER);
         if(this.DONE_COUNTER == 0){
             return true;
         }else{
