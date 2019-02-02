@@ -31,21 +31,19 @@ class Game{
 			v.clicked(()=>{
 				let curr_x = board.CURR_X;
 				let curr_y = board.CURR_Y;
-				let result = board.checkGrid(m,n);
-				if(result.boolFlag){
+				
+				board.checkGrid(m,n,(first)=>{
+					v.setValue(board.GRID[m][n])
+					board.DOM_BEFORE = v;
+				},(second)=>{
+					v.setValue(board.GRID[m][n])
+					board.DOM_BEFORE.setValue(board.GRID[curr_x][curr_y])
+				},(fin)=>{
 					v.setValue(board.GRID[m][n])
 					if(onFinish){
 				        onFinish(this)
 				    }
-				}else if(!result.boolFlag && result.intFlag == 3){
-					// update 1 dom into x
-					v.setValue(board.GRID[m][n])
-					board.DOM_BEFORE = v;
-				}else if(!result.boolFlag && result.intFlag < 3){
-					// update 2 dom into x or default
-					v.setValue(board.GRID[m][n])
-					board.DOM_BEFORE.setValue(board.GRID[curr_x][curr_y])
-				}
+				})
 				//draw result
 				v.htmlContent(`<h1>${v.value}</h1>`);
 				board.DOM_BEFORE.htmlContent(`<h1>${board.DOM_BEFORE.value}</h1>`)
