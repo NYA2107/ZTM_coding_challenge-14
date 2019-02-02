@@ -25,9 +25,13 @@ board.all((v)=>{
 	})
 	v.htmlContent(`<h1>${board.GRID[m][n]}</h1>`)
 	v.clicked(()=>{
-		console.log(board.checkGrid(m,n))
+		let x = board.CURR_X
+		let y = board.CURR_Y
+		board.checkGrid(m,n)
 		v.htmlContent(`<h1>${board.GRID[m][n]}</h1>`)
-
+		if(x > -1){
+			board.GRID_DOM[x][y].htmlContent(`<h1>${board.GRID[x][y]}</h1>`)
+		}
 		console.log(`CLICK: [${m},${n}]`,{
 			board:board,
 			card:v,
