@@ -5,6 +5,9 @@ class Dom{
 	setValue(value){
 		this.value = value
 	}
+	setOriginalValue(value){
+		this.originalValue = value
+	}
 	setIndex(i,j){
 		this.index = [i,j]
 	}

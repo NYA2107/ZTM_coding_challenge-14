@@ -33,6 +33,7 @@ class GD extends GE{
 				let domTemp = new Dom(this.ELEMENT)
 				domTemp.setId(`grid-${i}${j}`)
 				domTemp.setValue(this.GRID[i][j])
+				domTemp.setOriginalValue(this.GRID[i][j])
 				domTemp.setIndex(i,j)
 		    	array[i].push(domTemp)
 			}
