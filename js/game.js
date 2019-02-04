@@ -37,15 +37,11 @@ class Game{
 					board.checkGrid(m,n,(first)=>{
 						v.setValue(board.GRID[m][n])
 						board.DOM_BEFORE = v;
-						this.setEmoji(v, v.originalValue)
-						this.setEmoji(board.DOM_BEFORE, board.DOM_BEFORE.originalValue)
 					},(second)=>{
-						this.flagClick = 1
 						//NOTE : Error when clicked to fast
 						//should disable CLick
-						this.setEmoji(v, v.originalValue)
-						this.setEmoji(board.DOM_BEFORE, board.DOM_BEFORE.originalValue)
-
+						this.flagClick = 1
+						
 						v.setValue(board.GRID[m][n])
 						board.DOM_BEFORE.setValue(board.GRID[curr_x][curr_y])
 
@@ -57,8 +53,9 @@ class Game{
 								v.htmlContent(`<div></div>`)
 								board.DOM_BEFORE.htmlContent(`<div></div>`)
 							}
-							this.flagClick = 0
+
 							//ENABLE CLICK
+							this.flagClick = 0
 						}, 500)
 						
 					},(fin)=>{
@@ -67,6 +64,10 @@ class Game{
 					        onFinish(this)
 					    }
 					})
+
+					//DRAW EMOJI
+					this.setEmoji(v, v.originalValue)
+					this.setEmoji(board.DOM_BEFORE, board.DOM_BEFORE.originalValue)
 				}else{
 					//when user clicked too fast
 					console.log('You Clicked Too Fast')
